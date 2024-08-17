@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 // Struct Siswa
@@ -41,14 +42,15 @@ func main() {
 	}
 
 	// Variabel Untuk Simpan Parameter Dari Terminal
-	namaSiswa := os.Args[1]
+	namaSiswa := strings.ToLower(os.Args[1])
 
 	// Variabel Untuk Simpan Data Yg Ditemukan Di Terminal
 	var hasilPencarian []Siswa
 
 	// Looping Untuk Cek Apakah Ada Data Siswa Yg Cocok Dari Parameter dan Variabel Siswa
+	// Sengaja Sekalian Di Lower Untuk Test Function
 	for _, siswa := range siswas {
-		if siswa.Nama == namaSiswa || siswa.Id == namaSiswa {
+		if strings.ToLower(siswa.Nama) == namaSiswa || siswa.Id == namaSiswa {
 			// Append data yang ditemukan ke slice baru
 			hasilPencarian = append(hasilPencarian, siswa)
 		}
